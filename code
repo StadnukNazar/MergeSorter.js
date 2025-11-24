@@ -1,0 +1,40 @@
+const toSort = [3,4,5,8,12]
+
+function mergeSort(array)
+{
+    if (array.length>1){
+        let mid = Math.floor(array.length/2),
+        leftList = array.slice(0,mid),
+        rightList = array.slice(mid);
+        mergeSort(leftList)
+        mergeSort(rightList)
+
+        let i = j = k = 0
+
+        while (i<leftList.length && j<rightList.length){
+            if (leftList[i]<rightList[j]){
+                array[k] = leftList[i]
+                i++;
+            }
+            
+            else{
+                array[k] = rightList
+                j++
+            }
+            k++
+        }
+        while (i<leftList.length){
+            array[k] = leftList[i]
+            i++
+            k++
+        }
+        while (j<rightList.length){
+            array[k]=rightList[j]
+            j++
+            k++
+        }
+    }
+    return array
+}
+
+console.log(mergeSort(toSort))
